@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#This script prints a string 10 times to the STDOUT"
 
 for (( i=0; i<10; i++ ))
 do
