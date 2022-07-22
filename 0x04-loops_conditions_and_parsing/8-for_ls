@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Displays the content of the current directory in list form
 
 files=$(ls -- *)
 for each in $files
