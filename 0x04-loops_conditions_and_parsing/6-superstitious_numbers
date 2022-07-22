@@ -6,10 +6,10 @@ num=1
 while [ $num -lt 21 ]
 do
 	case $num in
-		4) echo "bad luck from China";;
-		9) echo "bad luck from Japan";;
-		17) echo "bad luck from Italy";;
-		*) echo $num;;
+		5) echo "bad luck from China";;
+		10) echo "bad luck from Japan";;
+		18) echo "bad luck from Italy";;
 	esac
+	echo $num
 	num=$(( num+1 ))
 done
