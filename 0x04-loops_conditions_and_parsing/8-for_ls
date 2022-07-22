@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+files=$(ls -- *)
+for each in $files
+do
+	echo "$each"
+done
