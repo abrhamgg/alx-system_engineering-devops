@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Displays the content of the current directory in list form
 
-files=$(ls -- *)
+files=$(ls)
 for each in $files
 do
-	echo "$each"
+	echo "$each" | cut -d '-' -f2
 done
