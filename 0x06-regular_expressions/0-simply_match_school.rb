@@ -4,6 +4,8 @@ if ARGV.empty?
   exit(2)
 end
 
-if ARGV[0] =~ /^School/
-  puts ARGV[0]
+if ARGV[0].match(/School/)
+  puts ARGV[0].match(/School/)
+else
+  puts
 end
