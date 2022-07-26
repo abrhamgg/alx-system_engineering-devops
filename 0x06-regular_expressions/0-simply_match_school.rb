@@ -5,7 +5,7 @@ if ARGV.empty?
 end
 
 if ARGV[0].match(/School/)
-  puts ARGV[0].match(/School/)
+  puts ARGV[0].scan(/School/).join
 else
   puts
 end
