@@ -4,6 +4,4 @@ if ARGV.empty?
   exit(2)
 end
 
-if p ARGV[0] =~ /^School/
-  puts ARGV[0]
-end
+puts  ARGV[0].scan(/School/).join
