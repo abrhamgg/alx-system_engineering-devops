@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cd ~
+ls
+pwd
+cp -f ../../etc/hostsBackup ../../etc/hosts
