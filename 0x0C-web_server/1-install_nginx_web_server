@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#install and config nginx in a remote server
+sudo apt update -y
+sudo apt install nginx -y
+echo "Hello World!" > var/www/html/index.html
+sudo service nginx restart
