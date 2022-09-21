@@ -2,5 +2,6 @@
 #install and config nginx in a remote server
 sudo apt update -y
 sudo apt install nginx -y
+sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" > var/www/html/index.html
 service nginx start
