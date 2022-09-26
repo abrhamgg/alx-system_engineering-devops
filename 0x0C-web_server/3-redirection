@@ -8,5 +8,5 @@ echo 'Hello World!' > /var/www/html/index.html
 
 # redirection
 BLOCK="location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}"
-sudo sed -i "30i $BLOCK" /etc/ngix/sites-enabled/default
+sudo sed -i "30i $BLOCK" /etc/nginx/sites-enabled/default
 sudo systemctl reload nginx
