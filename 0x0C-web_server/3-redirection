@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# installs nginx and configure it to listen on port 80
-# print "Hello World"
+# Configure Nginx server so that /redirect_me is redirecting to another page
+# redirection must be a “301 Moved Permanently”
+
+REDIRECT="\\\tlocation /redirect_me {\n\t\t return 301 https://google.com;\n\t}\n"
 
 sudo apt-get update
 sudo apt-get -y install nginx
-echo 'Hello World!' > /var/www/html/index.html
-
-# redirection
-BLOCK="location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}"
-sudo sed -i "30i $BLOCK" /etc/nginx/sites-enabled/default
-sudo systemctl reload nginx
+echo "Hello World" | sudo tee /usr/share/nginx/html/index.html
+sudo sed -i "30i $ADD301_REDIRECT" /etc/nginx/sites-available/default
+sudo service nginx start
