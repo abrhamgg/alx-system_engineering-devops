@@ -1,0 +1,3 @@
+#!/bin/bash
+var=$"hello'\n' how are you \\t"
+echo $var
