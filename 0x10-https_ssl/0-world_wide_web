@@ -1,5 +1,5 @@
-#!/bin/bash
-#Shell
+#!/usr/bin/env bash
+#Bash script that will display information about sub domains
 DOM=$1
 ARG=$#
 myfunc() {
