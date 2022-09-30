@@ -10,7 +10,7 @@ myfunc() {
                         URL="$sub.$DOM"
 			RECORD=$(dig "$URL" | grep -A1 'ANSWER SECTION:' | awk '{printf "%s", $4}')
 			IP=$(dig "$URL" | grep -A1 'ANSWER SECTION:' | awk '{printf "%s", $5}')
-                        echo "The subdomain $sub is a $RECORD and points to $IP"
+                        echo "The subdomain $sub is a $RECORD record and points to $IP"
                 done
         fi
 }
@@ -21,5 +21,5 @@ elif [ "$#" == 2 ];
 then
 	RECORD=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{printf "%s", $4}')
 	IP=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{printf "%s", $5}')
-        echo "The subdomain $2 is a $RECORD and points to $IP"
+        echo "The subdomain $2 is a $RECORD record and points to $IP"
 fi        
