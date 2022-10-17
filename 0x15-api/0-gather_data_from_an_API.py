@@ -9,8 +9,8 @@ if __name__ == "__main__":
     user = requests.get('https://jsonplaceholder.typicode.com/'
                         'users/{}'.format(sys.argv[1]))
     completed = requests.get('https://jsonplaceholder.typicode.com'
-                             '/todos?userId={}&completed=true'
-                             .format(sys.argv[1]))
+                             '/todos?userId={}&completed=true'.format
+                             (sys.argv[1]))
     EMPLOYEE_NAME = user.json()['name']
     NUMBER_OF_DONE_TASKS = len(completed.json())
     TOTAL_NUMBER_OF_TASKS = len(todos.json())
