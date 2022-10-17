@@ -1,22 +1,20 @@
 #!/usr/bin/python3
-'''
-export data in the CSV format
-'''
-
-import csv
+"""fetch information using APi"""
 import requests
-from sys import argv
+import sys
 
-if __name__ == '__main__':
-    uid = argv[1]
-    url = "https://jsonplaceholder.typicode.com/users/{}".format(uid)
-    user = requests.get(url, verify=False).json()
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
-        uid)
-    todo = requests.get(url, verify=False).json()
-    with open("{}.csv".format(uid), 'w', newline='') as csvfile:
-        taskwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for t in todo:
-            taskwriter.writerow([int(uid), user.get('username'),
-                                 t.get('completed'),
-                                 t.get('title')])
+
+if __name__ == "__main__":
+    API = 'https://jsonplaceholder.typicode.com/'
+    todos = requests.get('{}todos?userId={}'.format(API, sys.argv[1]))
+    user = requests.get('{}users/{}'.format(API, sys.argv[1]))
+    username = user.json()['username']
+    completed = requests.get('{}/todos?userId={}&completed=true'.format
+                             (API, sys.argv[1]))
+
+    with open('{}.csv'.format(sys.argv[1]), 'w') as csv:
+        for i in todos.json():
+            output = '"{}","{}","{}","{}"'.format(
+                sys.argv[1], username, i['completed'], i['title'])
+            csv.write(output)
+            csv.write('\n')
