@@ -14,8 +14,7 @@ if __name__ == "__main__":
 
     with open('{}.csv'.format(sys.argv[1]), 'w') as csv:
         for i in todos.json():
-            output = '"{}","{}","{}","{}"'.format(sys.argv[1],
-                                                  username, i['completed'],
-                                                  i['title'])
+            output = '"{}","{}","{}","{}"'.format(
+                sys.argv[1], username, i['completed'], i['title'])
             csv.write(output)
             csv.write('\n')
