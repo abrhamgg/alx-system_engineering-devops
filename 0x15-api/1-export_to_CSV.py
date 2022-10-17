@@ -1,31 +1,32 @@
 #!/usr/bin/python3
 """
-Using https://jsonplaceholder.typicode.com
-gathers data from API and exports it to CSV file
-Implemented using recursion
+a script that
+returns information about his/her TODO list progress.
 """
-import re
+import csv
 import requests
-import sys
+from sys import argv
 
 
-API = "https://jsonplaceholder.typicode.com"
-"""REST API url"""
+def export_to_csv():
+    """ returns information about his/her TODO list progress. """
+    user = (requests.get(
+        'http://jsonplaceholder.typicode.com/users?id={}'.format(
+            argv[1]))).json()
+    res = requests.get(
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.format(argv[1]))
+    done_task = []
+    num_all_task = 0
+    num_done_task = 0
+    userId = user[0].get('id')
+    for todo in res.json():
+        with open('{}.csv'.format(userId), mode='a') as todo_file:
+            todo_writer = csv.writer(
+                todo_file,
+                quoting=csv.QUOTE_ALL)
+            todo_writer.writerow([userId, user[0].get('username'),
+                                  todo.get('completed'), todo.get('title')])
 
 
 if __name__ == '__main__':
-    id = int(sys.argv[1])
-    user_res = requests.get('{}/users/{}'.format(API, id)).json()
-    todos_res = requests.get('{}/todos'.format(API)).json()
-    user_name = user_res.get('username')
-    todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-    with open('{}.csv'.format(id), 'w') as file:
-        for todo in todos:
-            file.write(
-                '"{}","{}","{}","{}"\n'.format(
-                    id,
-                    user_name,
-                    todo.get('completed'),
-                    todo.get('title')
-                )
-            )
+    export_to_csv()
