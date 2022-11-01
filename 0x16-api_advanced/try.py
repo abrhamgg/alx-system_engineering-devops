@@ -1,7 +1,9 @@
 import requests
 
 
-data = requests.get('http://www.reddit.com/r/programming/about.json', headers={'User-Agent': "subscribers"})
+data = requests.get('https://www.reddit.com/r/programming/hot/.json', headers={'User-Agent': "subscribers"})
 
-print(data.json())
-print((data.json().get('data')).get('subscribers'))
+print(data.json().get("data").get('children'))
+n = data.json().get("data").get('children')
+
+print(len(n))
